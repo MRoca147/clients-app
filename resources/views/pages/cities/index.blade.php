@@ -7,7 +7,11 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header card-header-primary">
-            <h4 class="card-title ">Ciudades</h4>
+            <h4 class="card-title ">Ciudades
+              <div class="float-right">
+                <a href="{{route('cities.create')}}" class="btn btn-success"><i class="material-icons">add</i> Crear</a>
+              </div>
+            </h4>
             <p class="card-category">Listado de ciudades</p>
           </div>
           <div class="card-body">
@@ -40,7 +44,7 @@
                       {{$city->name}}
                     </td>
                     <td class="text-primary">
-                      <button type="button" class="btn btn-info btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button>
+                      <a href="{{ route('cities.edit', $city->id) }}" type="button" class="btn btn-info btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</a>
                       <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i> Eliminar</button>
                     </td>
                   </tr>
