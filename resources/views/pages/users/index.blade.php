@@ -47,7 +47,7 @@
                         <a href="{{ route('users.edit', $user->id) }}" class="btn btn-info btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</a>
                         @if ($user->id!=1)
                             <form id="deleteForm_{{$user->id}}" action="{{route('users.destroy', $user)}}" method="POST">@csrf @method('delete')
-                              <button id="btn-submit" type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i> Eliminar</button>
+                              <button type="button" class="btn btn-danger btn-sm btn-submit"><i class="fa fa-trash" aria-hidden="true"></i> Eliminar</button>
                             </form>
                         @endif
                       </td>
@@ -67,7 +67,8 @@
 </div>
 @push('js')
     <script type="text/javascript">
-      $('#btn-submit').on('click',function(e){
+      $('.btn-submit').on('click',function(e){
+        e.preventDefault();
         var form = $(this).parents('form');
         Swal.fire({
          title: '¿Desea eliminar al usuario?',
@@ -75,7 +76,7 @@
          confirmButtonText: "Si, eliminar",
          cancelButtonText: "No, Cancela",
         }).then((result) => {
-          if(result){
+          if(result.value){
             form.submit()
           }
         })

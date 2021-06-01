@@ -45,7 +45,9 @@
                     </td>
                     <td class="text-primary">
                       <a href="{{ route('cities.edit', $city->id) }}" type="button" class="btn btn-info btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</a>
-                      <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i> Eliminar</button>
+                      <form id="deleteForm_{{$city->id}}" action="{{route('cities.destroy', $city)}}" method="POST">@csrf @method('delete')
+                        <button type="button" class="btn btn-danger btn-sm btn-submit"><i class="fa fa-trash" aria-hidden="true"></i> Eliminar</button>
+                      </form>                       
                     </td>
                   </tr>
                   @endforeach
@@ -61,4 +63,22 @@
     </div>
   </div>
 </div>
+@push('js')
+    <script type="text/javascript">
+      $('.btn-submit').on('click',function(e){
+        e.preventDefault();
+        var form = $(this).parents('form');
+        Swal.fire({
+         title: '¿Desea eliminar la ciudad?',
+         showCancelButton: true,
+         confirmButtonText: "Si, eliminar",
+         cancelButtonText: "No, Cancela",
+        }).then((result) => {
+          if(result.value){
+            form.submit()
+          }
+        })
+      });
+    </script>
+@endpush
 @endsection
