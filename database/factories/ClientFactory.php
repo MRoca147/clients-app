@@ -2,8 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Models\City;
 use App\Models\Client;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class ClientFactory extends Factory
 {
@@ -21,11 +23,10 @@ class ClientFactory extends Factory
      */
     public function definition()
     {
-        static $number = 1;
         return [
-            'cod' => $number++,
+            'cod' => Str::uuid(),
             'name' => $this->faker->name(),
-            'city' => $this->faker->numberBetween(1,10)
+            'city' => City::inRandomOrder()->first()->id
         ];
     }
 }

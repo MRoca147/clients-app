@@ -19,19 +19,19 @@
         </a>
       </li>
       <li class="nav-item{{ $activePage == 'clients' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('clients') }}">
+        <a class="nav-link" href="{{ route('clients.index') }}">
           <i class="material-icons">contact_phone</i>
             <p>{{ __('Clientes') }}</p>
         </a>
       </li>
       <li class="nav-item{{ $activePage == 'cities' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('cities') }}">
+        <a class="nav-link" href="{{ route('cities.index') }}">
           <i class="material-icons">location_city</i>
             <p>{{ __('Ciudades') }}</p>
         </a>
       </li>
       <li class="nav-item{{ $activePage == 'users' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('users') }}">
+        <a class="nav-link" href="{{ route('users.index') }}">
           <i class="material-icons">person</i>
             <p>{{ __('Usuarios') }}</p>
         </a>

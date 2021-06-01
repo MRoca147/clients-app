@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\City;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class CityFactory extends Factory
 {
@@ -22,9 +23,8 @@ class CityFactory extends Factory
      */
     public function definition()
     {
-        static $number = 1;
         return [
-            'cod' => $number++,
+            'cod' => Str::uuid(),
             'name' => $this->faker->city()
         ];
     }

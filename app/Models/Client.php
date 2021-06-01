@@ -20,7 +20,10 @@ class Client extends Model
     protected $fillable = [
         'cod',
         'name',
-        'city',
-        'state'
+        'city'
     ];
+
+    public function getCity(){
+        return $this->belongsTo(City::class, 'city');
+    }
 }
