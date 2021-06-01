@@ -26,4 +26,12 @@ class Client extends Model
     public function getCity(){
         return $this->belongsTo(City::class, 'city');
     }
+
+    public function scopeCityFilter($query, $city){
+        if(trim($city)){
+            $query->whereHas('getCity', function($q) use($city) {
+                $q->where('id', $city);
+            });
+        }
+    }
 }

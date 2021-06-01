@@ -15,6 +15,25 @@
             <p class="card-category">Listado de clientes</p>
           </div>
           <div class="card-body">
+            <div class="col-md-4 float-right">
+              <form action="{{route('clients.index')}}">
+                <div class="row">
+                  <div class="col-md-9">
+                    <label for="city">Ciudad</label>
+                    <select class="form-control" name="city" id="city" style="width: 70%">
+                      <option value="" selected disabled>Seleccione una opción</option>
+                      @foreach ($cities as $city)
+                          <option {{request()->city==$city->id}} value="{{$city->id}}">{{$city->name}}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                  <div class="col-md-2">
+                    <button type="submit" class="btn btn-warning btn-sm"><i class="material-icons">search</i></button>
+                    <a href="{{ route('clients.index') }}" class="btn btn-primary btn-sm"><i class="material-icons">clear</i></a>
+                  </div>
+                </div>
+              </form>
+            </div>
             <div class="table-responsive">
               <table class="table">
                 <thead class=" text-primary">

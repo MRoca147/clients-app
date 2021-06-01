@@ -17,7 +17,12 @@ class ClientController extends Controller
      */
     public function index(Client $model)
     {
-        return view('pages.clients.index', ['clients' => $model->with('getCity')->paginate(5)]);
+        $model = $model->cityFilter(request()->city);
+        $cities = City::all();
+        return view('pages.clients.index', [
+            'clients' => $model->with('getCity')->paginate(5),
+            'cities' => $cities
+        ]);
     }
 
     /**
