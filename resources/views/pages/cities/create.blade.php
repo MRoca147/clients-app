@@ -16,14 +16,14 @@
               @csrf
               <div class="form-group col-md-12">
                 <label for="name">Código</label>
-                <input type="text" class="form-control" name="cod" id="cod" placeholder="Codigo">
+                <input type="text" class="form-control" name="cod" id="cod" placeholder="Codigo" value="{{ old('cod') }}">
                 @error('cod')
                   <span class="text-danger">{{ $message }}</span>
                 @enderror
               </div>
               <div class="form-group col-md-12">
                 <label for="name">Nombre</label>
-                <input type="text" class="form-control" name="name" id="name" placeholder="Nombre">
+                <input type="text" class="form-control" name="name" id="name" placeholder="Nombre" value="{{ old('name') }}">
                 @error('name')
                   <span class="text-danger">{{ $message }}</span>
                 @enderror
