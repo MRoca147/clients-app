@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SetPassRequest;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -94,5 +95,17 @@ class UserController extends Controller
     {
         $user->delete();
         return redirect()->route('users.index');
+    }
+
+    public function viewPassword(User $user)
+    {
+        return view('auth.completeRegister.setPassword', ['user' => $user]);
+    }
+
+    public function setPassword(SetPassRequest $request)
+    {
+        $user = User::where('email', $request->email)->first();
+        $user->password = Hash::make($request->password);
+        return redirect()->route('login');
     }
 }
