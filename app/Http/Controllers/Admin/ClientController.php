@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ClientRequest;
+use App\Models\City;
 use App\Models\Client;
 use Illuminate\Http\Request;
 
@@ -25,7 +27,8 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        $cities = City::all();
+        return view('pages.clients.create', ['cities' => $cities]);
     }
 
     /**
@@ -34,9 +37,10 @@ class ClientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ClientRequest $request)
     {
-        //
+        Client::create($request->all());
+        return redirect()->route('clients.index');
     }
 
     /**
@@ -58,7 +62,9 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-        //
+        $client = Client::find($id);
+        $cities = City::all();
+        return view('pages.clients.edit', ['client' => $client, 'cities' => $cities]);
     }
 
     /**
@@ -68,9 +74,10 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ClientRequest $request, Client $client)
     {
-        //
+        $client->update($request->all());
+        return redirect()->route('clients.edit', $client->id);
     }
 
     /**
@@ -79,8 +86,9 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Client $client)
     {
-        //
+        $client->delete();
+        return redirect()->route('clients.index');
     }
 }
