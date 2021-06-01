@@ -7,6 +7,12 @@ use Illuminate\Database\Seeder;
 
 class ClientsTableSeeder extends Seeder
 {
+    protected $number;
+
+    public function __construct($number = null)
+    {
+        $this->number = $number;
+    }
     /**
      * Run the database seeds.
      *
@@ -14,6 +20,6 @@ class ClientsTableSeeder extends Seeder
      */
     public function run()
     {
-        Client::factory()->count(10)->create();
+        Client::factory()->count($this->number)->create();
     }
 }
