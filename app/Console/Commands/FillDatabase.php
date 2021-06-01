@@ -40,17 +40,20 @@ class FillDatabase extends Command
      */
     public function handle()
     {
-        $nclients =  $this->argument('clients');
-        $nUsers =  $this->argument('users');
-        $nCities =  $this->argument('cities');
-
+        
         $this->info('Generating test data...');
+        //Generate users
+        $nUsers =  $this->argument('users');
         $usersSeeder = new UsersTableSeeder($nUsers);
         $usersSeeder->run();
         
+        //Generate Cities
+        $nCities =  $this->argument('cities');
         $citiesSeeder = new CitiesTableSeeder($nCities);
         $citiesSeeder->run();
-
+        
+        //Generate Clients
+        $nclients =  $this->argument('clients');
         $clientsSeeder = new ClientsTableSeeder($nclients);
         $clientsSeeder->run();
         $this->info('Done.');
