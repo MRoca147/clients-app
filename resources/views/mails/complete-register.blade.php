@@ -44,7 +44,7 @@
                               <p style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Su usuario ha sido registrado correctamente en nuestra plataforma</p>
                               <p style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Para completar su acceso agregué una contraseña, de click en el siguiente link para completar el registro</p>
                               <p style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">
-                                <a href="{{route('viewPassword', ['user' => $data])}}" class="btn btn-primary">Establecer contraseña</a>
+                                <a href="{{route('viewPassword', ['email' => $data->email, 'token' => $data->confirmed_token])}}" class="btn btn-primary">Establecer contraseña</a>
                              </p>
                            </td>
                         </tr>

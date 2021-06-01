@@ -30,7 +30,6 @@ class CompleteRegister extends Mailable
     public function build()
     {
         return $this->view('mails.complete-register', ['data' => $this->data])
-            ->subject('Registro exitoso')
-            ->from('example@example.com');
+            ->subject('Registro exitoso');
     }
 }

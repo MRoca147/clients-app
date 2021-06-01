@@ -9,7 +9,7 @@
 
         <div class="card card-login card-hidden mb-3">
           <div class="card-header card-header-primary text-center">
-            <h4 class="card-title"><strong>{{ __('Login') }}</strong></h4>
+            <h4 class="card-title"><strong>{{ __('Establecer contraseña') }}</strong></h4>
           </div>
           <div class="card-body">
             <div class="bmd-form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
@@ -19,7 +19,7 @@
                     <i class="material-icons">email</i>
                   </span>
                 </div>
-                <input disabled type="email" name="email" class="form-control" placeholder="{{ __('Email...') }}" value="{{ $user->email }}" required>
+                <input type="email" name="email" class="form-control" placeholder="{{ __('Email...') }}" value="{{ $user->email }}" required>
               </div>
               @if ($errors->has('email'))
                 <div id="email-error" class="error text-danger pl-3" for="email" style="display: block;">
@@ -49,21 +49,13 @@
                     <i class="material-icons">lock_outline</i>
                   </span>
                 </div>
-                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="{{ __('Password...') }}" value="{{ !$errors->has('password') ? "secret" : "" }}" required>
+                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="{{ __('Password...') }}" required>
               </div>
               @if ($errors->has('password_confirmation'))
                 <div id="password-error" class="error text-danger pl-3" for="password_confirmation" style="display: block;">
                   <strong>{{ $errors->first('password_confirmation') }}</strong>
                 </div>
               @endif
-            </div>
-            <div class="form-check mr-auto ml-3 mt-3">
-              <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Recuerdame') }}
-                <span class="form-check-sign">
-                  <span class="check"></span>
-                </span>
-              </label>
             </div>
           </div>
           <div class="card-footer justify-content-center">

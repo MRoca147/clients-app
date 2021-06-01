@@ -6,6 +6,7 @@ use App\Mail\CompleteRegister;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class UserObserver
 {
@@ -17,6 +18,7 @@ class UserObserver
      */
     public function created(User $user)
     {
+        $user->update(['confirmed_token' => Str::random(20)]);
         Mail::to($user->email)->queue(new CompleteRegister($user));
     }
 

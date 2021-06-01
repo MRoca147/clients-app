@@ -16,8 +16,8 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('establecer-contraseña', 'UserController@viewPassword')->name('viewPassword');
-Route::post('setPassword', 'UserController@setPassword')->name('setPassword');
+Route::get('establecer-contraseña', 'Admin\UserController@viewPassword')->name('viewPassword');
+Route::post('setPassword', 'Admin\UserController@setPassword')->name('setPassword');
 
 Route::group(['middleware' => 'auth'], function () {
 

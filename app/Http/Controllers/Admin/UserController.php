@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SetPassRequest;
 use App\Http\Requests\UserRequest;
+use App\Mail\CompleteRegister;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -39,7 +42,8 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        User::create($request->all());
+        $user = User::create($request->all());
+        Mail::to($user->email)->send(new CompleteRegister($user));
         return redirect()->route('users.index');
     }
 
@@ -97,8 +101,10 @@ class UserController extends Controller
         return redirect()->route('users.index');
     }
 
-    public function viewPassword(User $user)
+    public function viewPassword(Request $request)
     {
+        $user = User::where('email', $request->email)
+        ->where('confirmed_token', $request->token)->first();
         return view('auth.completeRegister.setPassword', ['user' => $user]);
     }
 
@@ -106,6 +112,9 @@ class UserController extends Controller
     {
         $user = User::where('email', $request->email)->first();
         $user->password = Hash::make($request->password);
+        $user->confirmed_token = null;
+        $user->email_verified_at = Carbon::now()->toDateTimeString();
+        $user->update();
         return redirect()->route('login');
     }
 }
