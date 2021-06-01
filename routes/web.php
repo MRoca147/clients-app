@@ -29,9 +29,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//Ciudades
 	Route::resource('cities', 'Admin\CityController');
-	
-	Route::get('email', function () {
-			return view('mails.complete-register');
-	});
+
 });
 
