@@ -18,17 +18,6 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
-	// Route::get('clientes', function () {
-	// 	return view('pages.clients');
-	// })->name('clients');
-
-	// Route::get('ciudades', function () {
-	// 	return view('pages.cities');
-	// })->name('cities');
-
-	// Route::get('usuarios', function () {
-	// 	return view('pages.users');
-	// })->name('users');
 
 	//Usuarios
 	Route::resource('users', 'Admin\UserController');
@@ -38,5 +27,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//Ciudades
 	Route::resource('cities', 'Admin\CityController');
+	
 });
 
