@@ -9,6 +9,7 @@ use App\Mail\CompleteRegister;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
@@ -103,6 +104,9 @@ class UserController extends Controller
 
     public function viewPassword(Request $request)
     {
+        if(Auth::check()){
+            Auth::logout();
+        }
         $user = User::where('email', $request->email)
         ->where('confirmed_token', $request->token)->first();
         return view('auth.completeRegister.setPassword', ['user' => $user]);
