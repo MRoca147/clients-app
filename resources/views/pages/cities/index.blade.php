@@ -25,7 +25,7 @@
                     Código
                   </th>
                   <th>
-                    Name
+                    Nombre
                   </th>
                   <th>
                     Opciones

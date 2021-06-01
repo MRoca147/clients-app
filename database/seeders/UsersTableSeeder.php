@@ -30,6 +30,7 @@ class UsersTableSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now()
             ]);
+            User::factory()->count($this->number)->create();
         }else{
             User::factory()->count($this->number)->create();
         }

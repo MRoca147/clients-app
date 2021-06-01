@@ -9,9 +9,5 @@
 
 ## About Project
 
-Run Commands:
-  - php artisan migrate
-  - php artisan db:seed 
-
-Custom command for data test:
+Custom command for migration and data test:
   - php artisan database:fill {amount of users} {amount of cities} {amount of clients}

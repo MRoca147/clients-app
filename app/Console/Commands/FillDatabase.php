@@ -40,7 +40,9 @@ class FillDatabase extends Command
      */
     public function handle()
     {
-        
+        //Run migrations
+        $this->call('migrate');
+
         $this->info('Generating test data...');
         //Generate users
         $nUsers =  $this->argument('users');

@@ -57,7 +57,7 @@
         </div>
       </form>
       <div class="row">
-        <div class="col-6">
+        {{-- <div class="col-6">
             @if (Route::has('password.request'))
                 <a href="{{ route('password.request') }}" class="text-light">
                     <small>{{ __('¿Olvidó su contraseña?') }}</small>
@@ -68,7 +68,7 @@
             <a href="{{ route('register') }}" class="text-light">
                 <small>{{ __('Registrarse') }}</small>
             </a>
-        </div>
+        </div> --}}
       </div>
     </div>
   </div>
