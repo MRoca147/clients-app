@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ClientRequest;
+use App\Jobs\uploadPhoto;
 use App\Models\City;
 use App\Models\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ClientController extends Controller
 {
@@ -44,7 +46,9 @@ class ClientController extends Controller
      */
     public function store(ClientRequest $request)
     {
-        Client::create($request->all());
+        $client = Client::create($request->all());
+        $path = Storage::disk('public')->put('Clientes', $request->file('photo'));
+        $client->update(['photo' => $path]);
         return redirect()->route('clients.index');
     }
 

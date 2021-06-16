@@ -12,7 +12,7 @@
             <p class="card-category"></p>
           </div>
           <div class="card-body">
-            <form action="{{route('clients.store')}}" method="POST">
+            <form action="{{route('clients.store')}}" method="POST" enctype="multipart/form-data">
               @csrf
               <div class="form-group col-md-12">
                 <label for="name">Código</label>
@@ -39,6 +39,10 @@
                 @error('city')
                   <span class="text-danger">{{ $message }}</span>
                 @enderror
+              </div>
+              <div class="form-group col-md-12">
+                <label for="photo">Agregar foto</label>
+                <input type="file" name="photo" id="photo">
               </div>
               <div class="row">
                 <div class="col-md-12">

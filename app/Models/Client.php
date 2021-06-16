@@ -20,7 +20,8 @@ class Client extends Model
     protected $fillable = [
         'cod',
         'name',
-        'city'
+        'city',
+        'photo'
     ];
 
     public function getCity(){

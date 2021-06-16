@@ -41,6 +41,9 @@
                     ID
                   </th>
                   <th>
+                    Foto
+                  </th>
+                  <th>
                     Código
                   </th>
                   <th>
@@ -60,13 +63,16 @@
                       {{$client->id}}
                     </td>
                     <td>
+                      <img style="width: 50px; height: 50px" src="{{asset('storage').'/'.$client->photo}}" alt="">
+                    </td>
+                    <td>
                       {{$client->cod}}
                     </td>
                     <td>
                       {{$client->name}}
                     </td>
                     <td>
-                      {{$client->getCity->name}}
+                      {{$client->getCity?$client->getCity->name:'No tiene'}}
                     </td>
                     <td class="text-primary">
                       <a href="{{ route('clients.edit', $client->id) }}" type="button" class="btn btn-info btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</a>
